@@ -18,7 +18,15 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { authorization, model, messages, temperature, max_tokens } = req.body;
+    // 从环境变量读取 API Key，如果前端传了则使用前端传的
+    const apiKey = req.body.authorization || process.env.ZHIPU_API_KEY;
+    
+    if (!apiKey) {
+      res.status(500).json({ error: 'API Key 未配置' });
+      return;
+    }
+
+    const { model, messages, temperature, max_tokens } = req.body;
 
     const options = {
       hostname: 'open.bigmodel.cn',
@@ -27,7 +35,7 @@ module.exports = async (req, res) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': authorization
+        'Authorization': apiKey
       }
     };
 
