@@ -1,0 +1,11 @@
+{
+  "name": "abstract-slot-machine",
+  "version": "1.0.0",
+  "description": "B站抽象视频灵感捕捉器",
+  "scripts": {
+    "start": "node proxy-server.js"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
