@@ -6,6 +6,6 @@
     "start": "node proxy-server.js"
   },
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   }
 }
